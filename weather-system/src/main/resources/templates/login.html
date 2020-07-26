@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--suppress ThymeleafVariablesResolveInspection -->
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width-device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="sie-edge"/>
+    <link rel="stylesheet" type="text/css" href="asserts/css/style1.css">
+    <title>注册/登录</title>
+
+    <!--图标库-->
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+
+</head>
+
+<body>
+
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form th:action="@{/register}" method="post">
+            <h1 th:text="#{login.welcome}">欢迎注册</h1>
+            <input type="text" name="username" th:placeholder="#{login.username}">
+            <input type="password" name="password" th:placeholder="#{login.password}">
+
+            <input type="hidden" name="usertype" th:value="0" placeholder="类型:1 / 0">
+            <input type="text" name="phone" th:placeholder="#{login.phone}">
+
+            <button type="submit" th:text="#{login.btn}">注册</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form th:action="@{/userToNews}">
+           <br>
+            <h1 th:text="#{login.already}">已有账号</h1>
+
+            <input type="text" th:placeholder="#{login.username}" name="username">
+            <input type="password" th:placeholder="#{login.password}" name="password">
+            <button type="submit" th:text="#{login.sign}">登录</button>
+            <br>
+
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1 th:text="#{login.back}">欢迎回来</h1>
+                <p th:text="#{login.tip2}">与我们保持联系请登录您的个人信息</p>
+                <button class="ghost" id="signIn" th:text="#{login.sign}">登录</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1 th:text="#{login.welcome}">欢迎光临</h1>
+                <p th:text="#{login.tip1}">输入您的个人资料，并与我们一起开始旅程</p>
+                <button class="ghost" id="signUp" th:text="#{login.btn}">注册</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div>
+
+</div>
+
+
+<script src="asserts/js/script.js"></script>
+
+</body>
+</html>

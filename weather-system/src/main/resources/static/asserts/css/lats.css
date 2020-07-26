@@ -1,0 +1,318 @@
+
+.content {
+    margin: 5px auto 0;
+    display: inline-block;
+    width: 100%;
+}
+
+.wat-left {
+    width: 580px;
+}
+
+.wat-right {
+    width: 360px;
+}
+
+
+/*轮播图*/
+.focus_silde {
+    width: 580px;
+    height: 350px;
+}
+
+#demopage {
+    width: 580px;
+    height: 350px;
+}
+
+.slider {
+    margin: 0 auto;
+    width: 574px;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #285E9A;
+}
+
+.slider .conbox {
+    position: absolute;
+    width: 1650px;
+    left: 0px;
+}
+
+.slider .conbox-li {
+    float: left;
+    width: 350px;
+}
+
+.slider .conbox a img {
+    width: 575px;
+    height: 350px;
+    border: none;
+}
+
+.slider .conbox div {
+    width: 575px;
+    height: 350px;
+    position: relative;
+}
+
+.slider .conbox div a em {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 564px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    padding-left: 10px;
+    background: url(../images/dn.png);
+    color: #fff;
+    font-size: 16px;
+}
+
+.slider .conbox div a:hover em {
+    text-decoration: underline;
+}
+
+.slider .switcher {
+    height: 20px;
+    padding: 2px 0;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    float: right;
+    z-index: 99;
+    padding-left: 80px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.slider .switcher a {
+    background: #999;
+    cursor: pointer;
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin: 2px;
+    color: #fff;
+}
+
+.slider .switcher a.cur, .switcher a:hover {
+    background:#00FF00;
+    height: 20px;
+    width: 20px;
+}
+
+
+.wat-l {
+    width: 380px;
+    float: left;
+    border-top: none;
+    background: #fcfcfc;
+}
+
+.wat-l h3 {
+    text-align: center;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    color: #2F74C2;
+}
+
+.wat-l h3 a {
+    color: #2F74C2;
+    font-weight: bold;
+}
+
+.wat-l ul, .wat-l h3 {
+    padding-top: 12px;
+}
+
+.wat-l ul {
+    padding-top: 12px;
+    padding-bottom: 10px;
+}
+
+.wat-l li {
+    color: #F00;
+    float: left;
+    width: 350px;
+    padding-left: 15px;
+    line-height: 20px;
+}
+
+.wat-l li a {
+    color: #000;
+    text-indent: 20px;
+}
+
+.wat-l li a:hover {
+    text-decoration: underline;
+    color: #F00;
+}
+
+.wat-l div center font b a {
+    color: #F00;
+    font-size: 12px;
+}
+
+.STYLE1 {
+    color: #FF0000
+}
+
+.wat-list {
+    background: #EFEFEF;
+    border: 1px solid #E1E1E1;
+    padding: 3px 10px;
+}
+
+.wat-list ul {
+}
+
+.wat-list ul li {
+    height: 26px;
+    line-height: 26px;
+    padding: 0 5px 0 10px;
+    background: url(../images/dot.gif) left no-repeat;
+}
+
+.wat-list ul li a {
+}
+
+.wat-list ul li a:hover {
+    color: #F00;
+}
+
+.wat-list ul li span {
+    float: right;
+}
+
+.w350 {
+    width: 350px;
+}
+
+.w570 {
+    width: 570px;
+}
+
+.w940 {
+    width: 940px;
+}
+
+.wat-title {
+    height: 30px;
+    padding: 0px 0px 0px 10px;
+    margin: 10px 0px 0px 0px;
+    background: #2F78C5;
+}
+
+.wat-title h2 {
+    color: #ffffff;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    font-family: 黑体;
+}
+
+.wat-body {
+    background: #EFEFEF;
+    border: 1px solid #E1E1E1;
+}
+
+.ztPage .ztPage_list .a_temp {
+    width: 115px;
+    height: 140px;
+    margin: 10px 10px 0;
+    background: none;
+}
+
+.ztPage .ztPage_list a:hover {
+    text-decoration: none;
+}
+
+.a_temp {
+    display: block;
+    float: left;
+    margin: 20px 10px 0px;
+    display: inline;
+    width: 180px;
+    height: 180px;
+    overflow: hidden;
+}
+
+.a_temp span.d_img {
+    position: relative;
+}
+
+.ztPage_list .a_temp span.d_img, .ztPage_list .a_temp span.d_img img {
+    height: 90px;
+    width: 120px;
+}
+
+.ztPage .a_temp span.d_tit {
+    color: #000000;
+}
+
+.ztPage .a_temp span.d_tit {
+    font-size: 12px;
+    padding-top: 5px;
+}
+
+.ztPage .a_temp span.d_tit {
+    color: #000000;
+}
+
+.ztPage_page {
+    padding: 10px 0;
+    float: right;
+}
+
+.ztPage_page a {
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    margin: 0 2px;
+    padding: 0 8px;
+    border: 1px solid #BBBBBB;
+    border-radius: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>天气论坛</title>
+    <meta name="keywords" content="blog"/>
+    <meta name="description" content="blog"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="asserts/css/base.css" rel="stylesheet">
+    <link href="asserts/css/m.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="asserts/js/jquery-1.8.3.min.js"></script>
+    <script src="asserts/js/comm.js"></script>
+    <!--[if lt IE 9]>
+    <script src="asserts/js/modernizr.js"></script>
+
+    <style>
+        .fakeimg {
+            height: 200px;
+            background: #aaa;
+        }
+    </style>
+
+    <![endif]-->
+</head>
+<body>
+
+<div class="container">
+
+
+
+    <header id="header">
+        <div class="navbox">
+
+            <nav>
+                <ul id="starlist">
+                    <h1 id="mnavh"><span class="navicon"></span></h1>
+                    <div class="logo">
+                        <a style="font-family: 华文新魏;color: #FC9D9A;font-size:40px">天气论坛</a>
+                    </div>
+                    <div class="logo">
+                        <a href="http://localhost:8080/"
+                           style="font-family: 华文新魏;color: #FC9D9A;font-size:25px">返回首页</a>
+                    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <li style="float: right"><a style="font-family: 华文新魏;color: #f2dede;font-size: 25px" href="/toLogin"
+                                                th:if=" ${user}==null">登录</a>
+                        <a style="font-family: 华文新魏;color: #f2dede;font-size: 25px"
+                           th:href="@{/toBackend(userid=${user.userid})}"
+                           th:if=" ${user}!=null">[[${user.username}]]个人中心</a>
+
+                        <!--@{/toBackend(userid=${s.userid})}-->
+                    </li>
+                </ul>
+            </nav>
+            <div class="searchico"></div>
+        </div>
+    </header>
+
+    <!--top end-->
+    <article>
+        <!--lbox begin-->
+        <div class="lbox">
+            <!--banbox begin-->
+            <!--banbox end-->
+            <!--headline begin-->
+
+            <!--headline end-->
+            <div class="clearblank"></div>
+            <div class="tab_box whitebg">
+                <div class="tab_buttons">
+                    <ul>
+                        <li class="newscurrent">天气小知识</li>
+
+
+                    </ul>
+                </div>
+                <div class="newstab">
+                    <div class="newsitem">
+                        <div class="newspic">
+                            <ul>
+                                <li><a href="http://news.weather.com.cn/2019/12/3270002.shtml"><img
+                                        src="asserts/img/2.jpg"><span>一口气看完万米高空之上所有奇美罕见云</span></a>
+                                </li>
+                                <li><a href="http://www.weather.com.cn/space/2020/06/3347138.shtml"><img
+                                        src="asserts/img/1.jpg"><span>上天下地传万里，这场日食观测不一般</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="newslist">
+
+                            <li><i></i><a
+                                    href="http://www.weather.com.cn/zt/tqzt/3275985.shtml#p=1">三九真的最冷吗？大数据告诉你数九都有啥讲究！</a>
+                                <p>
+                                    属于中国的首次火星探测任务即将于7月份正式开始，个人判断当然是胜利登陆火星啊！无数个第一次又将被开启，届时除了心中不断涌出的自豪感和增强的民族自信外，各位老铁是不是觉着自己投资的某某基、何何股这回稳了，就等着下个月“得儿意的笑了”。
+                            </li>
+
+                            <li><i></i><a href="http://www.weather.com.cn/space/2020/06/3347106.shtml">中国火星任务即将出征！解析我国探火任务征途第一步</a>
+                                <p>
+                                    自从入了这行，很多人跟我说可以做网络教程，我也有考虑，但最终没有实现，因为我觉得在这个教程泛滥的时代，直接做一套免费的原创个人博客模板更为实在。</p>
+                            </li>
+
+                            <li><i></i><a href="http://www.weather.com.cn/space/kjtqdsj/05/1868929.shtml">2000年巴士底日事件
+                                破坏人造卫星</a>
+                                <p>2000年7月14日美国宇航局太阳过渡区与日冕探测器（Transition Region and Coronal
+                                    Explorer）在远紫外波段拍摄到的太阳黑子群，编号为9077的像。该黑子群活动区产生的太阳风暴引发了磁暴，并对人造卫星产生了破坏作用。该事件被人们称为“巴士底日事件”。</p>
+                            </li>
+                            <li><i></i><a href="http://www.weather.com.cn/zt/tqzt/3328110.shtml#p=1">揭秘！大数据剖析冰雹出没规律
+                                哪里冰雹砸伤人概率最大？</a>
+                                <p>
+                                    眼下，我国已经进入冰雹的高发期，最近几天，青海、浙江、福建、广东、山东等地陆续出现冰雹，一些地方冰雹如鸡蛋般大小，部分地区还出现了砸裂汽车玻璃、砸伤果木的情况。那么这个来去匆匆又极具破坏力的家伙，有没有什么规律可循呢？中国天气网专门研究了1981年至2010年的数据，为大家深度剖析“神秘任性”的冰雹。</p>
+                            </li>
+
+                            <li><i></i><a href="http://www.weather.com.cn/science/2019/01/3059415.shtml">嫦娥奔月究竟是为了啥？仅氦3就能发电1万年</a>
+                                <p>1月3日的朋友圈被首张月背图刷屏。当日10时26分,嫦娥四号探测器成功着陆在月球背面预选着陆区，并通过“鹊桥”月球中继星传回世界上第一张近距离拍摄的月背影像图。</p>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <!--tab_box end-->
+            <div class="zhuanti whitebg">
+                <form th:action="@{/findArticleBaurhor}" method="post" class="navbar-form navbar-left" role="search"
+                      style="float: right">
+                    <div class="form-group">
+                        &nbsp; &nbsp; <a href="/toNews"><span style="font-family: 方正粗黑宋简体;color: #090909;size: 40px">文章列表</span>
+                    </a>&nbsp; &nbsp;
+                        &nbsp;
+                        <input type="text" name="author" class="form-control" placeholder="输入用户名搜索">
+                    </div>
+                    <button type="submit" class="btn btn-default">搜索</button>
+                </form>
+
+            </div>
+
+            <div class="zhuanti whitebg">
+                <ul>
+
+                    <div th:each="article:${articleList}">
+                        <li><i class="ztpic"><a th:href="@{/toArticle(articleid=${article.articleid})}" target="_blank"><img
+                                th:src="${article.img}"></a></i>
+                            <b>[[${article.title}]]</b>作者：[[${article.author}]]</span>
+                            <a
+                                    th:href="@{/toArticle(articleid=${article.articleid})}" target="_blank"
+                                    class="readmore">文章阅读</a></li>
+                    </div>
+
+                </ul>
+
+            </div>
+
+            <!--bloglist end-->
+        </div>
+        <div class="rbox">
+            <div class="card">
+                <h2>小组信息</h2>
+                <p>成员：郑旋| 黄梓才|苏浩南</p>
+                <p>项目名称：气象论坛系统</p>
+                <p>技术支持：Java+springboot+mybatis+boostrap</p>
+                <p>Email：229586555@qq.com</p>
+            </div>
+            <div class="whitebg notice">
+                <h2 class="htitle" style="font-family: 方正姚体;color: #090909;font-size: 18px">热门文章排行</h2>
+                <ul>
+                    <li th:each="rank:${rankList}"><a style="font-family: 黑体;color: #2E2D3C;font-size: 18px"
+                                                      th:href="@{/toArticle(articleid=${rank.articleid})}">[[${rank.title}]]</a>
+                    </li>
+
+                </ul>
+            </div>
+
+
+            <div class="whitebg wenzi">
+                <h2 class="htitle">推荐站点</h2>
+                <ul>
+                    <li><a href="http://www.weather.com.cn/">中国天气网</a></li>
+                    <li><a href="http://www.chinamsa.org/">中国气象协会</a></li>
+                    <li><a href="http://www.weathertv.cn/live/">中国天气频道</a></li>
+                    <li><a href="http://www.cma.gov.cn/">中国气象局</a></li>
+                    <li><a href="http://www.cmatc.cn/www/res/ychjy/index.shtml">气象远程教育网</a></li>
+                    <li><a href="http://www.wmc-bj.net/">气象教育中心（北京）</a></li>
+                    <li><a href="https://ydyl.cma.cn/">一带一路气象服务网</a></li>
+                    <li><a href="http://weather.news.sina.com.cn/">新浪天气</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+    </article>
+
+
+</div>
+
+
+</body>
+</html>

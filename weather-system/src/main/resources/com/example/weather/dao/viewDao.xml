@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.weather.dao.ViewDao">
+
+    <!--    配置用户实体Mapper-->
+    <resultMap id="viewMap" type="view">
+
+        <id property="viewid" column="viewid"></id>
+        <result property="belongcity" column="belongcity"></result>
+        <result property="viewname" column="viewname"></result>
+        <result property="correweather" column="correweather"></result>
+        <result property="introduction" column="introduction"></result>
+        <result property="viewimg" column="viewimg"></result>
+    </resultMap>
+<!--    查询所有景点-->
+<select id="findAllView" resultMap="viewMap">
+    select * from view
+</select>
+    <!--保存景点-->
+    <insert id="saveView" parameterType="view">
+        insert into view (viewid,viewname,belongcity,correweather,introduction,viewimg)
+            value (#{viewid},#{viewname},#{belongcity},#{correweather},#{introduction},#{viewimg})
+
+    </insert>
+    <delete id="deleteView" parameterType="INT">
+
+        delete from view where viewid=#{viewid}
+
+    </delete>
+    <!--    根据vid查询景点-->
+    <select id="findViewByVid" resultMap="viewMap">
+    select * from view where viewid=#{viewid}
+</select>
+    <!--根据id修改景点-->
+    <update id="alterView" parameterType="view">
+       UPDATE view SET belongcity=#{belongcity},viewname=#{viewname},correweather=#{correweather},introduction=#{introduction} WHERE viewid=#{viewid}
+
+    </update>
+    <!--    根据vid查询景点-->
+    <select id="findViewByWeather" parameterType="view" resultMap="viewMap">
+    select * from view where correweather=#{correweather}
+</select>
+
+</mapper>

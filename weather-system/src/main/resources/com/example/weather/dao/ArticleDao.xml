@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.weather.dao.ArticleDao">
+
+    <!--    配置文章实体Mapper-->
+    <resultMap id="articleMap" type="article">
+
+        <id property="articleid" column="articleid"></id>
+        <result property="title" column="title"></result>
+        <result property="author" column="author"></result>
+        <result property="userid" column="userid"></result>
+        <result property="content" column="content"></result>
+        <result property="clicknum" column="clicknum"></result>
+        <result property="picture" column="picture"></result>
+        <result property="status" column="status"></result>
+        <result property="buildtime" column="buildtime"></result>
+    </resultMap>
+
+    <!--保存待审核的文章-->
+    <insert id="saveArticle" parameterType="article">
+            INSERT INTO article ( articleid, title, author, userid, content, clicknum, status, img ,buildtime)
+            VALUE
+                (#{articleid}, #{title}, #{author}, #{userid}, #{content}, #{clicknum}, #{status}, #{img} ,#{buildtime})
+    </insert>
+
+    <!--    通过用户id查询其所有文章-->
+    <select id="findAllArticleByUid" parameterType="INT" resultMap="articleMap">
+    select * from article where userid=#{userid}
+    </select>
+
+
+    <!--    根据状态查询相应的文章-->
+    <select id="findAllArticleByStatus" parameterType="string" resultMap="articleMap">
+    select * from article where status=#{status}
+    </select>
+
+
+    <!--根据id修改文章的状态-->
+    <update id="changeArticleStatusByAid" parameterType="article">
+        update  article SET status=#{status} WHERE articleid=#{articleid}
+
+    </update>
+
+    <!--    根据id删除文章-->
+    <delete id="deleteArticle" parameterType="INT">
+        delete from article where articleid=#{articleid}
+    </delete>
+
+    <select id="findArticleByAid" parameterType="INT" resultMap="articleMap">
+    select * from article where articleid=#{articleid}
+    </select>
+
+
+    <!--根据id修改文章的点击量-->
+    <update id="changeClicNum" parameterType="article">
+       UPDATE article SET clicknum=clicknum+1 WHERE articleid=#{articleid}
+
+    </update>
+
+
+    <!--根据id修改文章-->
+    <update id="alterArticle" parameterType="article">
+       UPDATE article SET status=#{status},title=#{title},content=#{content} WHERE articleid=#{articleid}
+
+    </update>
+    <!--获取排行榜数据-->
+    <select id="getRankingList" resultMap="articleMap">
+
+        SELECT * FROM article WHERE status='已通过审核' ORDER BY clicknum DESC LIMIT 10
+    </select>
+
+    <select id="findArticleByUname" parameterType="article" resultMap="articleMap">
+        SELECT * FROM article WHERE author=#{author} and status='已通过审核'
+
+    </select>
+
+
+</mapper>

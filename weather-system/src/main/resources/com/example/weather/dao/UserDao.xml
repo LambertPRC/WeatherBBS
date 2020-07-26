@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.weather.dao.UserDao">
+
+    <!--    配置用户实体Mapper-->
+    <resultMap id="userMap" type="user">
+
+        <id property="userid" column="userid"></id>
+        <result property="password" column="password"></result>
+        <result property="username" column="username"></result>
+        <result property="usertype" column="usertype"></result>
+        <result property="phone" column="phone"></result>
+
+    </resultMap>
+
+<!--用户注册-->
+    <insert id="userRegister" parameterType="user">
+
+INSERT into user (userid,password,username,usertype,phone)VALUE(#{userid},#{password},#{username},#{usertype},#{phone});
+    </insert>
+
+    <!--查询所有用户-->
+    <select id="findAllUser" resultMap="userMap">
+    select * from user
+    </select>
+
+<!--    通过用户名和密码验证登录-->
+    <select id="findUserByUsernameAndPassword" parameterType="user" resultMap="userMap">
+       SELECT * FROM user WHERE username=#{username} and password=#{password}
+    </select>
+
+<!--    根据id查询用户-->
+    <select id="findUserByUerid" resultMap="userMap" parameterType="INT">
+    select * from user where userid=#{userid}
+    </select>
+
+
+<!--    用户修改信息-->
+    <update id="changeUInfoByNameAndPassword" parameterType="user">
+        UPDATE user SET username=#{username},phone=#{phone},password=#{password} WHERE userid=#{userid}
+
+    </update>
+
+    <!--    根据id删除文章-->
+    <delete id="deleteUserByUid" parameterType="INT">
+        delete from user where userid=#{userid}
+    </delete>
+
+</mapper>

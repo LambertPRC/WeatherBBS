@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>全国天气查询小应用</title>
+    <link rel="stylesheet" href="asserts/css/weather.css"/>
+    <link rel="icon" href="asserts/ico/favicon.ico"/>
+    <link rel="stylesheet" href="asserts/layui/css/layui.css"/>
+    <script type="text/javascript" src="asserts/layui/layui.js"></script>
+    <link href="asserts/layui/css/layui.css" rel="stylesheet"/>
+
+    <script src="asserts/layui/layui.js" type="text/javascript"></script>
+    <script src="asserts/js/jquery2.min.js" type="text/javascript"></script>
+
+    <style th:inline="text">
+        body {
+            background: url("asserts/img/bg.jpg");
+        }
+    </style>
+</head>
+<body >
+
+
+<div th:fragment="topbar">
+    <ul class="layui-nav" lay-filter="">
+        <li class="layui-nav-item">
+            <h2 style="font-family: 华文隶书;font-size: 40px" href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+        </li>
+        <li class="layui-nav-item">
+            <h2 class="layui-nav-item-logo" style="font-family: 华文新魏;color: #FC9D9A;font-size: 45px" href="">天气系统</h2>
+        </li>
+        <li class="layui-nav-item">
+            <a  th:href="@{/tourismRecom(belongcity=${weatherInfoMap.get('weather_day0').cityname},correweather=${weatherInfoMap.get('weather_day0').weather})}" style="font-family: 华文新魏;color: #FC9D9A;font-size: 28px">景点推荐</a>
+        </li>
+
+        <li class="layui-nav-item">
+            <a href="/toNews" th:href="@{toNews}" style="font-family: 华文新魏;color: #FC9D9A;font-size: 28px" >推荐主页</a>
+        </li>
+
+        <li class="layui-nav-item">
+            <h2 style="font-family: 华文隶书;font-size: 40px" href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+        </li>
+        <li class="layui-nav-item layui-nav-item-a">
+            <a href="/toLogin" th:href="@{toAdminLogin}" style="font-size: 28px;font-family: 华文行楷;float: left" >管理员入口</a>
+        </li>
+
+
+    </ul>
+</div>
+<div class="layui-main" style="font-family: 华文新魏;color: #2E2D3C;font-size: 16px">
+    <form class="layui-form" action="/tomap" th:action="@{tomap}" method="get" style="margin:50px auto">
+        <div class="layui-form-item">
+            <label class="layui-form-label">请选择地区</label>
+            <div class="layui-inline">
+                <select name="province" id="province" lay-verify="required" lay-search lay-filter="province">
+                    <option value="">省份</option>
+                </select>
+            </div>
+            <div class="layui-inline">
+                <select name="cityname" id="city" lay-verify="required" lay-search lay-filter="city">
+                    <option value="">地级市</option>
+                </select>
+            </div>
+
+
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-inline">
+                <button type="submit" class="layui-btn ">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<section >
+    <div id="today_container" style="font-family: 华文新魏;color: #0C0C0C;font-size: 28px;width: 1000px" >
+        <div>
+            <img src="asserts/img/weather_icon/1.png" alt="今日天气"/>
+        </div>
+        <div class="main_info">
+            <span class="" th:text="${weatherInfoMap.get('weather_day0').cityname}"></span>|
+            <span class="" th:text="${weatherInfoMap.get('weather_day0').date}"></span>|
+            <span class="" th:text="${weatherInfoMap.get('weather_day0').week}"></span>|
+            <span class="">实时温度：[[${weatherInfoMap.get('weather_day0').temp}]]℃</span>|
+        </div>
+
+        <div class="main_info">
+
+            <div class="">
+                <span class="" th:text="${weatherInfoMap.get('weather_day0').weather}"></span>|
+                最高温：[[${weatherInfoMap.get('weather_day0').highTemp}]]<span class=""></span>|
+                最高温：[[${weatherInfoMap.get('weather_day0').lowTemp}]]<span class=""></span></div>
+        </div>
+        <br>
+
+        <div class="main_info">
+
+           &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp;&nbsp; <span class="">小提示：[[${weatherInfoMap.get('weather_day0').tips}]]</span>
+        </div>
+    </div>
+    <div id="future_container">
+
+        <div class="future_box">
+            <img src="asserts/img/weather_icon/3.png" style="width: 100px ;height: 100px" alt="天气"/>
+            <span class="future_info">[[${weatherInfoMap.get('weather_day0').date}]]</span>
+            <span class="future_info">[[${weatherInfoMap.get('weather_day0').week}]]</span>
+            <span class="future_info">-</span><span class="future_info">[[${weatherInfoMap.get('weather_day0').lowTemp}]]-[[${weatherInfoMap.get('weather_day0').highTemp}]]℃</span>
+        </div>
+        <div class="future_box">
+            <img src="asserts/img/weather_icon/1.png" alt="天气"/>
+            <span class="future_info">[[${weatherInfoMap.get('weather_day1').date}]]</span>
+            <span class="future_info">[[${weatherInfoMap.get('weather_day1').week}]]</span>
+            <span class="future_info">-</span><span class="future_info">[[${weatherInfoMap.get('weather_day1').lowTemp}]]-[[${weatherInfoMap.get('weather_day1').highTemp}]]℃</span>
+        </div>
+        <div class="future_box">
+            <img src="asserts/img/weather_icon/1.png" alt="天气"/>
+            <span class="future_info">[[${weatherInfoMap.get('weather_day2').date}]]</span>
+            <span class="future_info">[[${weatherInfoMap.get('weather_day2').week}]]</span>
+            <span class="future_info">-</span><span class="future_info">[[${weatherInfoMap.get('weather_day2').lowTemp}]]-[[${weatherInfoMap.get('weather_day2').highTemp}]]℃</span>
+        </div>
+        <div class="future_box">
+            <img src="asserts/img/weather_icon/2.png" alt="天气"/>
+            <span class="future_info">[[${weatherInfoMap.get('weather_day3').date}]]</span>
+            <span class="future_info">[[${weatherInfoMap.get('weather_day3').week}]]</span>
+            <span class="future_info">-</span><span class="future_info">[[${weatherInfoMap.get('weather_day3').lowTemp}]]-[[${weatherInfoMap.get('weather_day3').highTemp}]]℃</span>
+        </div>
+    </div>
+</section>
+
+<script>
+    layui.use('element', function () {
+        var $ = layui.jquery,
+            element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+    });
+</script>
+<script src="asserts/js/index.js"></script>
+<script src="asserts/js/area.js" type="text/javascript"></script>
+<script src="asserts/js/select.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function jg() {
+        alert($("#province").val() + $("#city").val() + $("#district").val());
+    }
+</script>
+
+</body>
+</html>

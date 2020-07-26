@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>管理员后台</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        .fakeimg {
+            height: 200px;
+            background: #aaa;
+        }
+    </style>
+    <style th:inline="text">
+        body {
+            background: url("asserts/img/bg2.jpg");
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container" style="width: 1300px">
+
+    <div class="jumbotron text-center" style="background: #2E2D3C">
+        <h2 style="font-family: 华文新魏;color: #fcfcfc;font-size: 50px">管理员后台</h2>
+    </div>
+
+    <nav class="navbar navbar-inverse" >
+        <div class="container-fluid" >
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav" >
+                    <li><a href="http://localhost:8080/"   style="font-family: 华文新魏;color: #FC9D9A;font-size: 28px">返回天气首页</a></li>
+                    <li ><a  th:href="@{/findVerifyedArticle(status=已通过审核,userid=${user.userid})}"   style="font-family: 华文新魏; color: #FFB800;font-size: 25px">已通过列表</a ></li>
+                    <li><a th:href="@{/findVerifyedArticle(status=审核中,userid=${user.userid})}"   style="font-family: 华文新魏;color: #00F7DE;font-size: 25px">未审核列表</a></li>
+                    <li><a th:href="@{/findVerifyedArticle(status=审核未通过,userid=${user.userid})}"   style="font-family: 华文新魏;color: #FFB800;font-size: 25px">未通过审核列表</a></li>
+
+                    <li><a th:href="@{/toViewMenage(userid=${user.userid})}"   style="font-family: 华文新魏;color: #00F7DE;font-size: 25px">推荐景点管理</a></li>
+                    <li><a th:href="@{/toUsermMenage(userid=${user.userid})}"   style="font-family: 华文新魏;color: #00F7DE;font-size: 25px">用户管理</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2 style="font-family: 华文新魏;color: #1b6d85">管理员信息</h2>
+
+                <div class="fakeimg" style="width: 10px;height: 10px"><img src="asserts/img/avatar.jpg"></div>
+
+                <hr class="hidden-sm hidden-md hidden-lg">
+            </div>
+            <div class="col-sm-8">
+                <table class="table table-hover">
+
+                    <thead>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    </thead>
+                    <tbody>
+                    <tr class="warning">
+                        <td style="font-family: 华文新魏;color: #1b6d85">ID(不可修改)</td>
+                        <td style="font-family: 华文新魏;color: #1b6d85">[[${user.userid}]]</td>
+                    </tr>
+                    <tr class="warning">
+                        <td style="font-family: 华文新魏;color: #1b6d85">名字</td>
+                        <td style="font-family: 华文新魏;color: #1b6d85">[[${user.username}]]</td>
+                    </tr>
+                    <tr class="warning">
+                        <td style="font-family: 华文新魏;color: #1b6d85">联系电话</td>
+                        <td style="font-family: 华文新魏;color: #1b6d85">[[${user.phone}]]</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+                <!--==================修改信息-->
+
+                <div class="panel-group" id="accordion" style="width: 720px">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion"
+                                   href="#collapseTwo">
+                                    <button type="button" class="btn btn-success">点击修改</button>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <!--表单-->
+                                        <form th:action="@{/toChangeUserInfo}" class="form-horizontal" role="form">
+                                            <input type="hidden" class="form-control"
+                                                   th:value="${user.userid}" name="userid">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" style="font-family: 华文新魏;color: #1b6d85">名字</label>
+                                                <div class="col-sm-10">
+                                                    <input style="font-family: 华文新魏;color: #1b6d85" type="text" class="form-control"
+                                                           th:value="${user.username}" name="username">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" style="font-family: 华文新魏;color: #1b6d85">联系电话</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control"
+                                                           th:value="${user.phone}" name="phone">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" style="font-family: 华文新魏;color: #1b6d85">密码</label>
+                                                <div class="col-sm-10">
+                                                    <input type="password" class="form-control"
+                                                           th:value="${user.password}" name="password">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <button type="submit" class="btn btn-info" style="font-family: 华文新魏;color: #1b6d85">提交</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--==============================================-->
+
+            </div>
+        </div>
+    </div>
+
+
+    <table class="table">
+        <caption style="font-family: 华文新魏;color: #1b6d85;font-size: 30px">文章管理</caption>
+
+        <thead>
+
+        <tr>
+
+            <th style="font-family: 华文新魏;color: #1b6d85;font-size: 20px">文章编号</th>
+            <th style="font-family: 华文新魏;color: #1b6d85;font-size: 20px">文章标题</th>
+            <th style="font-family: 华文新魏;color: #1b6d85;font-size: 20px">作者</th>
+            <th style="font-family: 华文新魏;color: #1b6d85;font-size: 20px">创建时间</th>
+            <th style="font-family: 华文新魏;color: #1b6d85;font-size: 20px">状态</th>
+            <th style="font-family: 华文新魏;color: #1b6d85;font-size: 20px">操作</th>
+        </tr>
+        </thead>
+
+
+
+
+
+        <tbody th:if="${articleList.isEmpty()}">
+
+
+            <td style="font-family: 华文新魏;color: #FD482C;font-size: 33px" >没有要处理的内容</td>
+        </tbody>
+
+
+
+
+    <tbody >
+        <tr th:if="${!articleList.isEmpty()}" class="success" th:each="article:${articleList}">
+            <td style="font-family: 华文新魏;color: #1b6d85;font-size: 20px">[[${article.articleid}]]</td>
+            <td style="font-family: 华文新魏;color: #1b6d85;font-size: 20px">[[${article.title}]]</td>
+            <td style="font-family: 华文新魏;color: #1b6d85;font-size: 20px">[[${article.author}]]</td>
+            <td style="font-family: 华文新魏;color: #1b6d85;font-size: 20px" th:text="${#dates.format(article.buildtime, 'yyyy-MM-dd HH:mm')}"></td>
+            <td style="font-family: 华文新魏;color: #1b6d85;font-size: 20px">[[${article.status}]]</td>
+
+            <div th:switch="${article.status}">
+
+                <td  th:case="审核中">
+                    <a th:href="@{/changeArticleStatus(articleid=${article.articleid},status=审核未通过,userid=${user.userid})}">
+                        <button type="button" class="btn btn-danger" th:text="婉拒"></button>
+                    </a>
+
+                    <a th:href="@{/changeArticleStatus(articleid=${article.articleid},status=已通过审核,userid=${user.userid})}">
+                        <button type="button" class="btn btn-info">通过</button>
+                    </a>
+                </td>
+
+                <td th:case="已通过审核">
+                    <a th:href="@{/deleteArticle(articleid=${article.articleid},userid=${user.userid})}">
+                        <button type="button" class="btn btn-danger" th:text="删除"></button>
+                    </a>
+                <td th:case="审核未通过">
+                    <a th:href="@{/deleteArticle(articleid=${article.articleid},userid=${user.userid},status=${article.status})}">
+                        <button type="button" class="btn btn-danger" th:text="删除"></button>
+                    </a>
+
+
+
+                </td>
+
+            </div>
+
+
+
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+
+</body>
+</html>

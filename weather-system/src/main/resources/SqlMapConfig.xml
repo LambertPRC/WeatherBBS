@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--环境-->
+<configuration>
+    
+    <properties resource="jdbcConfig.properties"></properties>
+    
+    <typeAliases >
+        <package name="com.example.weather.bean"></package>
+    </typeAliases>
+
+    <environments default="mysql">
+        <environment id="mysql">
+
+            <transactionManager type="JDBC"></transactionManager><!--事务类型-->
+            <dataSource type="POOLED"><!--数据源-->
+
+                <property name="driver" value="${jdbc.driver}"></property>
+                <property name="url" value="${jdbc.url}"></property>
+                <property name="username" value="${jdbc.username}"></property>
+                <property name="password" value="${jdbc.password}"></property>
+
+
+            </dataSource>
+        </environment>
+    </environments>
+
+<!--直接配置package，用于指定dao接口所在的包，当指定了之后就不需要在写mapper以及resource或者class了
+-->
+    <mappers>
+        <package name="com.example.weather.dao"></package>
+    </mappers>
+
+</configuration>

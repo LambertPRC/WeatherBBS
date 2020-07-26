@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../../static/asserts/layui/css/layui.css" />
+		<script type="text/javascript" src="../../static/asserts/layui/layui.js"></script>
+	</head>
+
+	<body>
+
+
+
+		<div class="head"  th:fragment="topbar">
+			<ul class="layui-nav" lay-filter="">
+				<li class="layui-nav-item">
+					<a class="layui-nav-item-logo" href="">LOGO</a>
+				</li>
+				<li class="layui-nav-item layui-this">
+					<a href="">首页</a>
+					<dl class="layui-nav-child">
+						<!-- 二级菜单 -->
+						<dd>
+							<a href="">condfew</a>
+						</dd>
+						<dd>
+							<a href="">condfew</a>
+						</dd>
+						<dd>
+							<a href="">condfew</a>
+						</dd>
+						<dd>
+							<a href="">condfew</a>
+						</dd>
+						<dd>
+							<a href="">condfew</a>
+						</dd>
+					</dl>
+				</li>
+				<li class="layui-nav-item">
+					<a href="consultation.html">推荐</a>
+				</li>
+				<li class="layui-nav-item">
+					<a href="">资讯</a>
+				</li>
+				<li class="layui-nav-item">
+					<a href="javascript:;">个人中心</a>
+				</li>
+				<li class="layui-nav-item layui-nav-item-a">
+					<a class="" target="_parent" href="">登录 / 注册</a>
+				</li>
+			</ul>
+		</div>
+		<script>
+			layui.use('element', function() {
+				var $ = layui.jquery,
+					element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+			});
+		</script>
+	</body>
+
+</html>

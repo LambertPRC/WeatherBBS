@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>文章阅读</title>
+  <link rel="stylesheet" href="asserts/css/style.css">
+
+  <style >
+    body{
+      background: url("asserts/img/bcg.jpg");
+
+    }
+  </style>
+
+</head>
+<body>
+
+<div class="main-container">
+  <div class="left-container" style="background: #FFB800">
+    <div class="title" style="color: #1b6d85">
+      <p><span>标题:</span><br />[[${article.title}]]</p>
+      <div class="line"></div>
+    </div>
+    <div class="profile" >
+      <img src="asserts/img/320755dbe6849f1c26308e67c5eb2b67.jpeg" alt="user-avatar" />
+      <p class="username" style="color: #2b542c;font-family: 方正姚体;size: 50px">[[${article.author}]]</p>
+    </div>
+  </div>
+
+  <div class="right-container" style="width: 1300px;height: auto">
+    <div class="text"  style="color: #2b542c;font-family: 黑体;size: 50px">
+      <p >
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>[[${article.content}]]
+      </p>
+    </div>
+    <div class="footer">
+      <p class="date" th:text="${#dates.format(date,'yy-MM-dd HH:mm')}"><strong></strong></p>
+      <div class="comments">
+        <img src="asserts/img/KvP.svg" alt="comment-icon" />
+        <img src="asserts/img/Kuh.svg" alt="more-icon" />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
